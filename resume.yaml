@@ -4,93 +4,126 @@ basics:
   label: Software Engineer
   url: https://alexashery.com
   summary: |
-    Experienced leader with deep relationships across Earth, Mars, and the Belt. 
-    Demonstrated expertise in managing complex relationships and stakeholder networks.
-    Qualified starship captain with hands-on approach and close combat skills.
-
-    *This is an example resume template*.
+    Hi
   profiles:
-    - network: BeltaNet
-      username: camina
+    - network: LinkedIn
+      username: alex-ashery-1b219a109
+      url: https://www.linkedin.com/in/alex-ashery-1b219a109/
+    - network: Github
+      username: alex-ashery
+      url: https://github.com/alex-ashery
 work:
-  - name: Transport Union
-    position: President
-    startDate: "2303-01-01"
-    tags:
-      - leadership
-      - management
-      - strategy
+  - name: Zillow Group, LLC
+    position: Software Development Engineer, Big Data
+    url: https://www.zillow.com/
+    startDate: 2020-11-09
+    endDate: 2022-01-25
+    summary: 
     highlights:
-      - Founding president of multi-solar-system commerce conglomerate.
-  - name: Medina Station
-    position: Captain
-    startDate: "2277-05-01"
-    tags:
-      - leadership
-      - operations
-      - security
+      - Assisted migration from Presto on Qubole to Trino on Starburst. Maintained Qubole service prior to migration. Documentated and communicated migration status and user action items. Bootstrapped new Trino clusters on k8s and documented process. Conducted tests. Collaborated with Starburst support on resolving pain points.
+      - Wrote k8s ExternalSecrets manifests for Trino. Encoded secrets and datalake access policies in Terraform.
+      - Developed a Java tool for replaying Presto/Trino queries which mimics production traffic patterns. Used tool to evaluate the system’s performance and functional capabilities for version upgrades and feature comparisons. Educated and guided BI Platform team members with using the query replay tool for conducting migration tests.
+      - Provided on-call support for Mode, Tableau, and Presto/Trino for data scientists and business analysts.
+      - Directed India team members in providing CI/CD tooling for automated deployment to our Presto clusters.
+      - Implemented RubiX caching - an async read-through cache for Trino's hive connector - to improve cluster scalability. Conducted performance evaluations, concluding a 7% decrease in total query wall time.
+      - Automated processes for batch platform team. Developed Airflow DAG for attributing datalake usage to teams at Zillow. Wrote Spark script to generate object manifests for Glacier restore operations. Restored user data.
+  - name: Microsoft Corporation
+    position: Software Development Engineer I, Azure App Service on Linux
+    url: https://azure.microsoft.com/en-us/pricing/details/app-service/linux/
+    startDate: 2018-12-01
+    endDate: 2020-10-01
+    summary: Focused primarily on internal telemetry capabilities and monitoring features available to customers.
     highlights:
-      - Led Belter and OPA forces in control of OPAS *Behemoth*.
-      - Established and maintained OPA presence in critical system transfer point.
-  - name: Tycho Station
-    position: Assistant Director
-    startDate: "2276-05-01"
-    tags:
-      - operations
-      - security
+      - Upgraded and was responsible for platform telemetry services. Migrated platform to use Fluent Bit for log forwarding, which dramatically improved telemetry reliability and performance.
+      - Implemented Linux Platform logs, which provides customers with improved insights into problems impacting app management.
+      - Enabled monitoring of custom images for App Service Linux customers via Azure App Insights.
+      - Collaborated on developing the bring-your-own-storage feature, which allows customers to mount Azure Storage solutions to their Linux web apps. Enabled feature configuration via ARM templates. Conducted performance tests to provide customer guidance on setting storage quotas for anticipated workloads.
+      - Enabled configuring custom docker images via digests, which provides customers fine-grain control of which image their app uses.
+      - Triaged customer incidents during on-call rotations.
+  - name: Microsoft Corporation
+    position: Software Development Engineer I, Azure Data Lake Storage
+    url: https://azure.microsoft.com/en-us/products/storage/data-lake-storage
+    startDate: 2016-09-06
+    endDate: 2018-12-01
+    summary: Worked on a microservice that enables byte-level updatability of an append-only distributed filesystem.
     highlights:
-      - Defended the station from mutineers.
-      - Appropriated *200* valuable munitions from UNN forces.
+      - Formulated and implemented a performance test capable of stressing updatability service’s transactional API, which identified performance and functional bugs, and established service performance metrics.
+      - Created a method for reliably maintaining multiple Bond RPC connections in the updatability service.
+      - Built a scenario testing platform for updatability service and integrated platform with VSTS for gated check-ins, improving service reliability and lowering test development time.
+      - Created an updatability service frontend for load-balancing. Updated the service RPC schema and communication mechanisms to use simplified, command-agnostic requests, reducing frontend serialization overhead.
+      - Wrote modules that handle leader election for dynamic load-balancing in naming service.
+      - Upgraded updatability service to communicate using a secure transport protocol, enabling security compliance.
+      - Bootstrapped, maintained, deployed to, and regulated testing on an Autopilot cluster reserved for testing of the updatability microservice, enabling the team to evaluate the service’s distributed capabilities.
+      - Triaged Cosmos and ADLS customer incidents in on-call rotation.
+      - Bootstrapped a new Cosmos cluster, enabling expanded service availability.
+      - Upgraded the updatability build system to MSBuild, dramatically reducing development time overhead.
+      - Wrote documentation on and assisted teammates in making internal ADLS accounts.
+  - name: Brown University, Center for Computational Molecular Biology, Raphael Lab
+    position: Undergraduate Research Assistant
+    url: https://raphael-group.github.io/
+    startDate: 2015-06-01
+    endDate: 2015-08-21
+    summary: Developed an optimization to an algorithm that infers tumor heterogeneity and composition in exponential time, by using non-parametric clustering of b-allele frequency data to reduce input size.
+  - name: University of Pennsylvania, High Energy Physics Experimental Group
+    position: Undergraduate Research Assistant
+    url: https://www.hep.upenn.edu/HEP_website_09/index.html
+    startDate: 2014-06-01
+    endDate: 2014-09-01
+    summary: Developed a Python-based software platform for testing sensors used in the Atlas project at the LHC.
 education:
-  - institution: Univ. of Ceres
-    area: Station Management
+  - institution: Brown University
+    area: Computer Science
     studyType: B.A.
-    startDate: "2262-01-01"
-    endDate: "2266-01-01"
-awards:
-  - title: Tycho Station handball champion
-    date: "2023-06-01"
-    tags:
-      - athletics
-      - leadership
-skills:
-  - name: Starship navigation
-    tags:
-      - operations
-      - navigation
-  - name: Epstein Drive maintenance
-    tags:
-      - engineering
-      - operations
-  - name: Small arms
-    tags:
-      - security
-      - tactics
-  - name: Piracy
-    tags:
-      - tactics
-      - unconventional
-  - name: Anti-piracy
+    startDate: "2012-09"
+    endDate: "2016-05"
+    courses:
+      - Machine Learning
+      - Advanced Algorithms
+      - Computer Systems
+      - Data Science
+  - institution: Brown University
+    area: Physics
+    studyType: B.A.
+    startDate: "2012-09"
+    endDate: "2016-05"
+    courses:
+      - Electricity & Magnetism
+      - Advanced Classical Mechanics
+      - Quantum Mechanics
+      - Computational Physics
+certificates:
+  - name: Certified Kubernetes Application Developer
+    date: "2022-10-03"
+    issuer: The Linux Foundation
+    url: https://www.credly.com/badges/dfd66a96-3a7f-4f27-bf19-0f83af776226
+  - name: "LFS242: Cloud Native Logging with Fluentd and Fluent Bit"
+    date: "2023-04-22"
+    issuer: The Linux Foundation
+    url: https://www.credly.com/badges/fa74d46d-b2dd-4c9b-957d-771062d0bef9
+  - name: "LFS244: Managing Kubernetes Applications with Helm"
+    date: "2023-07-15"
+    issuer: The Linux Foundation
+    url: https://www.credly.com/badges/7eb738b1-de9d-4a5e-8250-5446acd09902
+  - name: "Datadog Certified: Datadog Fundamentals"
+    date: "2023-08-02"
+    issuer: Datadog
+    url: https://www.credly.com/badges/9fc523ee-a961-4c3b-b4ce-7c7830b21836
+languages:
+  - language: English
+    fluency: Native speaker
+  - language: Spanish
+    fluency: Elementary
+interests:
+  - name: History
     keywords:
-      - break
-    tags:
-      - security
-      - tactics
-  - name: Conflict resolution
-    tags:
-      - leadership
-      - management
-  - name: Relationship management
-    tags:
-      - leadership
-      - management
-  - name: Hostage negotiation
-    tags:
-      - security
-      - leadership
-projects:
-  - name: Nauvoo
-    description: generation ship built at Tycho Station.
-    tags:
-      - engineering
-      - operations
+      - Polynesia
+      - Age of Exploration
+  - name: Genealogy
+  - name: Outdoors
+    keywords:
+      - Skiing
+      - Hiking
+      - Snowshoeing
+  - name: Music
+  - name: Movies
+  - name: Video Games
