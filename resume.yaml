@@ -13,12 +13,20 @@ basics:
       username: alex-ashery
       url: https://github.com/alex-ashery
 work:
-  - name: Zillow Group, LLC
-    position: Software Development Engineer, Big Data
+  - name: Block, Inc.
+    position: Senior Software Engineer, Platform Observability
     url: https://www.zillow.com/
     startDate: 2020-11-09
     endDate: 2022-01-25
     summary: 
+    highlights:
+      - 
+  - name: Zillow Group, LLC
+    position: Software Development Engineer, Data Infrastructure
+    url: https://www.zillow.com/
+    startDate: 2020-11-09
+    endDate: 2022-01-25
+    summary: Built and operated Zillow’s data infrastructure. Implemented automation to improve the scalability and performance of critical data platform operations for internal analytics teams.
     highlights:
       - Assisted migration from Presto on Qubole to Trino on Starburst. Maintained Qubole service prior to migration. Documentated and communicated migration status and user action items. Bootstrapped new Trino clusters on k8s and documented process. Conducted tests. Collaborated with Starburst support on resolving pain points.
       - Wrote k8s ExternalSecrets manifests for Trino. Encoded secrets and datalake access policies in Terraform.
@@ -32,7 +40,7 @@ work:
     url: https://azure.microsoft.com/en-us/pricing/details/app-service/linux/
     startDate: 2018-12-01
     endDate: 2020-10-01
-    summary: Focused primarily on internal telemetry capabilities and monitoring features available to customers.
+    summary: Worked on platform observability for Azure App Service on Linux, contributing telemetry and monitoring features for both internal operations and customer diagnostics. Developed runtime capabilities that improved app configuration flexibility and storage integration for Linux workloads.
     highlights:
       - Upgraded and was responsible for platform telemetry services. Migrated platform to use Fluent Bit for log forwarding, which dramatically improved telemetry reliability and performance.
       - Implemented Linux Platform logs, which provides customers with improved insights into problems impacting app management.
@@ -45,7 +53,7 @@ work:
     url: https://azure.microsoft.com/en-us/products/storage/data-lake-storage
     startDate: 2016-09-06
     endDate: 2018-12-01
-    summary: Worked on a microservice that enables byte-level updatability of an append-only distributed filesystem.
+    summary: Developed a microservice for Azure Data Lake Storage that implemented byte-level updatability in a distributed filesystem, enabling arbitrary file writes instead of append-only workflows. Contributed to core service components such as load balancing and connection management, as well as supporting infrastructure such as performance testing and scenario testing.
     highlights:
       - Formulated and implemented a performance test capable of stressing updatability service’s transactional API, which identified performance and functional bugs, and established service performance metrics.
       - Created a method for reliably maintaining multiple Bond RPC connections in the updatability service.
@@ -63,7 +71,7 @@ work:
     url: https://raphael-group.github.io/
     startDate: 2015-06-01
     endDate: 2015-08-21
-    summary: Developed an optimization to an algorithm that infers tumor heterogeneity and composition in exponential time, by using non-parametric clustering of b-allele frequency data to reduce input size.
+    summary: Developed an optimization to an algorithm that infers tumor heterogeneity and composition in exponential time, by using non-parametric clustering of b-allele frequency data to reduce algorithmic input size.
   - name: University of Pennsylvania, High Energy Physics Experimental Group
     position: Undergraduate Research Assistant
     url: https://www.hep.upenn.edu/HEP_website_09/index.html
@@ -127,3 +135,5 @@ interests:
   - name: Music
   - name: Movies
   - name: Video Games
+  - name: Homelab
+  - name: Home Improvement
