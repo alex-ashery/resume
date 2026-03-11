@@ -15,12 +15,22 @@ basics:
 work:
   - name: Block, Inc.
     position: Senior Software Engineer, Platform Observability
-    url: https://www.zillow.com/
-    startDate: 2020-11-09
-    endDate: 2022-01-25
+    url: https://block.xyz/
+    startDate: 2022-03-21
+    endDate: 2026-02-26
     summary: 
     highlights:
-      - 
+      - Served as a key contributor to Block’s SignalFx-to-Datadog migration by co-authoring migration guidance, providing hands-on developer support and troubleshooting, improving the GitOps monitor provisioning workflow from user feedback, coordinating migration contractors and PR reviews, and partnering with platform teams to establish reusable monitor templates and ownership expectations.
+      - Served as a Datadog admin and technical expert by defining PII-leak and log-rehydration policies, coordinating incidents when leaks occurred, guiding users toward effective and budget-conscious rehydration scopes, approving and provisioning sensitive resources (RBAC, API keys, RUM apps), and helping developers troubleshoot Datadog usage and pipeline integration issues. Acted as a cross-functional connector between leadership, platform teams, product developers, and Datadog stakeholders (TAM, account, product), translating needs across groups and providing product performance, cost, and reliability feedback that informed contract negotiations and platform direction.
+      - Owned Cash App log pipeline administration (Fluentd/Vector), including rate-limiting strategy, deployment modernization (Helm/Argo CD), multiline log integrity fixes, and new DNS access-log ingestion to S3 for Security analytics.
+      - Drove Cash App’s multi-quarter migration from Fluentd to Vector after validating, through stress testing and PoC benchmarking, that Fluentd could not meet projected cloud-monolith log volume while Vector could. Authored the decision doc that secured leadership buy-in, onboarded and guided engineers across schema validation/monitoring/rule translation workstreams, built and deployed Terraform-managed pipeline infrastructure (secrets, IAM, Argo apps) across accounts and EKS clusters, coordinated staged parallel rollout and capacity planning with SRE/Compute/Cloud Economics, and executed cutover and deprecation with zero log loss, duplication, or downtime.
+      - Metrics pipeline administration
+      - Monitor provisioning pipeline
+      - Monitor provisioning pipeline migration
+      - Platform unification, observability infra and multi-cluster
+      - Log pipeline graceful degradation
+      - Served in support and on-call rotations for observability, assisting developers with telemetry pipelines, Datadog, and monitor provisioning, and escalating issues into bugs, feature work, or incidents when appropriate. Established outage runbooks and shared on-call practices (SLA, rotation, handoff), led incident response and postmortems with cross- functional stakeholders, and introduced a weekly support-review/root-cause process that reduced queue load and moved observability support from the busiest platform queue to fourth.
+      - Conducted programming and system design interviews for engineering candidates across Block.
   - name: Zillow Group, LLC
     position: Software Development Engineer, Data Infrastructure
     url: https://www.zillow.com/
