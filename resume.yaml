@@ -18,19 +18,19 @@ work:
     url: https://block.xyz/
     startDate: 2022-03-21
     endDate: 2026-02-26
-    summary: Worked on the Platform Observability team to improve the reliability, scalability, and operability of Block’s telemetry systems. Contributed to major migrations and day-to-day platform administration across metrics, logs, and monitoring, while coordinating across developers, platform teams, security, and vendors to improve incident response, cost/reliability outcomes, and internal developer experience.
+    summary: Worked on the Platform Observability team to improve the reliability, scalability, and operability of Block’s telemetry systems. Contributed to major migrations and day-to-day platform administration across metrics, logs, and monitoring. Coordinating across developers, platform teams, security, and vendors to improve incident response, cost/reliability outcomes, and internal developer experience.
     highlights:
-      - Served as a key contributor to Block’s SignalFx-to-Datadog migration by co-authoring migration guidance, providing hands-on developer support and troubleshooting, improving the GitOps monitor provisioning workflow from user feedback, coordinating migration contractors, and partnering with platform teams to establish reusable monitor templates and ownership expectations.
-      - Served as a Datadog admin and technical expert by defining PII-leak and log-rehydration policies, coordinating incidents when leaks occurred, guiding users toward effective and budget-conscious rehydration scopes, approving and provisioning sensitive resources (RBAC, API keys, RUM apps), and helping developers troubleshoot Datadog usage and pipeline integration issues. Acted as a cross-functional connector between leadership, platform teams, product developers, and Datadog stakeholders (TAM, account, product), translating needs across groups and providing product performance, cost, and reliability feedback that informed contract negotiations and platform direction.
-      - Owned Cash App log pipeline administration (Fluentd/Vector), including rate-limiting strategy, deployment modernization (Helm/Argo CD), multiline log integrity fixes, and new DNS access-log ingestion to S3 for Security analytics.
-      - Drove Cash App’s multi-quarter migration from Fluentd to Vector after validating, through stress testing and PoC benchmarking, that Fluentd could not meet projected cloud-monolith log volume while Vector could. Authored the decision doc that secured leadership buy-in, onboarded and guided engineers across schema validation/monitoring/rule translation workstreams, built and deployed Terraform-managed pipeline infrastructure (secrets, IAM, Argo apps) across accounts and EKS clusters, coordinated staged parallel rollout and capacity planning with SRE/Compute/Cloud Economics, and executed cutover and deprecation with zero log loss, duplication, or downtime.
-      - Administered Cash App’s metrics pipeline by bootstrapping datadog-agent Argo applications and Terraform infrastructure, identifying and remediating metric loss caused by scrape-limit constraints at scale, enabling non-standard partner integrations (including pre-GA Temporal Cloud and dedicated PlanetScale clusters), and building Helm/Argo-based deployment for a GPU metrics exporter to ingest ML cluster telemetry into Datadog.
-      - Monitor provisioning pipeline (priority notifications migration)
-      - Monitor provisioning pipeline migration
-      - Platform observability unification, infra and multi-cluster
-      - Improved Square log pipeline resilience by implementing graceful degradation for Elasticsearch outages (dead-letter queues, replay consumers, and ILM safeguards for safe reindexing) and serving as Observability point of contact during a cross-region disaster-recovery exercise, where I identified west-2 dependency as a single point of failure, defined short-term mitigation to preserve service observability during partition scenarios, and guided implementation of a partition-resilient per-region pipeline design for archival storage, indexing queues, and consumers.
-      - Enabled AI platform observability and access at scale by building an Envoy-based Datadog API proxy for Block’s internal MCP server (network-accessible, credential-injected, RBAC-constrained read-only access), advising Goose engineers on OTEL metric emission and a Vector-based gateway for laptop-to-Datadog ingestion, and bootstrapping logs/metrics pipelines plus app-level Datadog observability in a dedicated EKS cluster for cloud-hosted LLM agents.
-      - Served in support and on-call rotations for observability, assisting developers with telemetry pipelines, Datadog, and monitor provisioning, and escalating issues into bugs, feature work, or incidents when appropriate. Established outage runbooks and shared on-call practices (SLA, rotation, handoff), led incident response and postmortems with cross- functional stakeholders, and introduced a weekly support-review/root-cause process that reduced queue load and moved observability support from the busiest platform queue to fourth.
+      - Enabled AI platform observability and access at scale. Built an Envoy-based Datadog API proxy for Block’s internal MCP server (network-accessible, credential-injected, RBAC-constrained read-only access). Advised internal LLM engineers on OTEL metric emission and a Vector-based gateway for laptop-to-Datadog ingestion. Bootstrapped telemetry pipelines and app-level Datadog observability in a dedicated EKS cluster for cloud-hosted LLM agents.
+      - Served as a Datadog admin and technical expert. Acted as a cross-functional connector between leadership, platform teams, product developers, and Datadog stakeholders (TAM, account, product). Translated needs across groups and provided product performance, cost, and reliability feedback that informed contract negotiations and platform direction. Defined PII-leak policies and coordinated leak incidents. Defined log-rehydration policies and guided users toward effective and budget-conscious rehydration scopes. Approved and provisioned sensitive resources (RBAC, API keys, RUM apps), and helped developers troubleshoot Datadog usage and pipeline integration issues. 
+      - Led platform observability unification across deployment infrastructure. Advocated for adoption of the Compute team's platform service provisioner and migrated Cash App telemetry pipelines to prove the path, with zero downtime. Served as DRI for migration of telemetry services across business units, with multi-quarter planning, blocker remediation, and progress reporting. Guided Square migrations for telemetry pipelines using Helm, Kustomize, and Argo CD, and resolved key blockers including Argo SSO/RBAC access and a YAML rendering bug that I fixed in a forked external binary. Delivered telemetry pipeline rollout to 10+ new EKS clusters as an unplanned, deadline-driven initiative, rapidly absorbing a newly introduced platform goal and executing on schedule. Established a repeatable multi-cluster rollout process. Made mutli-cluster telemetry pipeline deployment scalable by setting up a Kargo project for automated promotions. Onboarded around ten engineers on Helm, Kubernetes, Argo CD, Kargo, and GitOps practices over my tenure.
+      - Led monitor provisioning migration strategy through shifting org direction and leadership changes. Took over the migration effort, ran a proof of concept, guided tooling development, and wrote a decision document for leadership review. Authored a vision proposal for “default monitoring,” where infrastructure provisioning systems also provisioned baseline monitoring, so new infrastructure did not launch unmonitored. Socialized my proposal across engineering leadership, product, SRE, and Cloud CD partners, which was adopted into platform direction. Partnered with the DRI of a new company-wide infrastructure pipeline to implement my vision, validated feasibility through PoCs, and designed abstractions that preserved Cash App’s existing monitoring schema for a seamless migration path. Onboarded the next migration DRI and published clarifying design guidance on default monitoring requirements that was approved and used as a prerequisite for alignment with new leadership.
+      - Improved Square log pipeline resilience. Implemented graceful degradation for Elasticsearch outages using dead-letter queues, replay consumers, and ILM safeguards for safe reindexing. Served as Observability point of contact during a cross-region disaster-recovery exercise where we identified west-2 dependency as a single point of failure. Defined short-term mitigation for the exercise to preserve service observability, and guided implementation of a partition-resilient per-region pipeline design for archival storage, indexing queues, and consumers.
+      - Drove Cash App’s multi-quarter migration from Fluentd to Vector. Validated through stress testing and PoC benchmarking that Fluentd could not meet projected cloud-monolith log volume while Vector could. Authored the decision doc that secured leadership buy-in. Onboarded and guided engineers across schema validation, monitoring, and rule translation workstreams. Built and deployed Terraform-managed pipeline infrastructure (secrets, IAM, Argo apps) across accounts and EKS clusters. Coordinated staged parallel rollout and capacity planning with SRE/Compute/Cloud Economics. Executed cutover and deprecation with zero log loss, duplication, or downtime.
+      - Served as a key contributor to Block’s SignalFx-to-Datadog migration. Co-authored migration guidance. Provided hands-on developer support and troubleshooting. Improved the GitOps monitor provisioning workflow from user feedback. Coordinated migration contractors. Partnered with platform teams to establish reusable monitor templates and ownership expectations.
+      - Administered Cash App’s log pipeline. Led rate-limiting strategy and operations by implementing exceptions, owner-visible metrics/monitors, and transition from service-level to host-level limiting. Modernized deployment of rate-limiting infrastructure from imperative kubectl workflows to Helm/Argo CD. Resolved multiline log fragmentation via containerd logtag parsing and Fluentd concat processing. Enabled node-local DNS access log delivery through Vector to an S3 dataset used by security analytics team.
+      - Administered Cash App’s metrics pipeline. Bootstrapped datadog-agent Argo applications and Terraform infrastructure. Identified and remediated metric loss caused by scrape-limit constraints at scale. Enabled non-standard partner integrations including pre-GA Temporal Cloud metrics and PlanetScale BYOC metrics. Built Helm/Argo-based deployment for a GPU metrics exporter to ingest ML cluster telemetry into Datadog.
+      - Supported and improved Cash App’s monitor provisioning pipeline. Helped teams migrate monitor definitions from the SignalFx monorepo to the new GitHub/Buildkite-based workflow. Defined monitor templates and helped partner platform teams implement their own templates. Updated the pipeline JSON schema for template validation and added schema support for additional Datadog monitor features. Fixed a bug in the git-diff trigger logic used to decide when provisioning jobs should run. Paired with a teammate on a large-scale change to update the pipeline’s user notification system. Triaged support-channel issues, implemented relevant fixes and feature requests, and expanded usage and troubleshooting documentation. Advised SRE team on developing tooling that notified users when monitor templates required updates.
+      - Served in support and on-call rotations for observability. Assisting developers with telemetry pipelines, Datadog, and monitor provisioning. Escalated issues into bugs, feature work, or incidents when appropriate. Established outage runbooks and shared on-call practices (SLA, rotation, handoff). Led incident response and postmortems with cross-functional stakeholders. Introduced a weekly support-review/root-cause process for the observability team that reduced queue load and moved observability support from the busiest platform queue to fourth.
       - Conducted programming and system design interviews for engineering candidates across Block.
   - name: Zillow Group, LLC
     position: Software Development Engineer, Data Infrastructure
@@ -39,7 +39,7 @@ work:
     endDate: 2022-01-25
     summary: Built and operated Zillow’s data infrastructure. Implemented automation to improve the scalability and performance of critical data platform operations for internal analytics teams.
     highlights:
-      - Assisted migration from Presto on Qubole to Trino on Starburst. Maintained Qubole service prior to migration. Documentated and communicated migration status and user action items. Bootstrapped new Trino clusters on k8s and documented process. Conducted tests. Collaborated with Starburst support on resolving pain points.
+      - Assisted migration from Presto on Qubole to Trino on Starburst. Maintained Qubole service prior to migration. Documentated and communicated migration status and user action items. Bootstrapped new Trino clusters on EKS and documented process. Conducted tests. Collaborated with Starburst support on resolving pain points.
       - Wrote k8s ExternalSecrets manifests for Trino. Encoded secrets and datalake access policies in Terraform.
       - Developed a Java tool for replaying Presto/Trino queries which mimics production traffic patterns. Used tool to evaluate the system’s performance and functional capabilities for version upgrades and feature comparisons. Educated and guided BI Platform team members with using the query replay tool for conducting migration tests.
       - Provided on-call support for Mode, Tableau, and Presto/Trino for data scientists and business analysts.
@@ -64,7 +64,7 @@ work:
     url: https://azure.microsoft.com/en-us/products/storage/data-lake-storage
     startDate: 2016-09-06
     endDate: 2018-12-01
-    summary: Developed a microservice for Azure Data Lake Storage that implemented byte-level updatability in a distributed filesystem, enabling arbitrary file writes instead of append-only workflows. Contributed to core service components such as load balancing and connection management, as well as supporting infrastructure such as performance testing and scenario testing.
+    summary: Developed a microservice written in C++ for Azure Data Lake Storage that implemented byte-level updatability in a distributed filesystem, enabling arbitrary file writes instead of append-only workflows. Contributed to core service components such as load balancing and connection management, as well as supporting infrastructure such as performance testing and scenario testing.
     highlights:
       - Formulated and implemented a performance test capable of stressing updatability service’s transactional API, which identified performance and functional bugs, and established service performance metrics.
       - Created a method for reliably maintaining multiple Bond RPC connections in the updatability service.
@@ -97,19 +97,22 @@ education:
     endDate: "2016-05"
     courses:
       - Machine Learning
-      - Advanced Algorithms
+      - Design and Analysis of Algorithms
       - Computer Systems
       - Data Science
+      - Discrete Structures and Probability
   - institution: Brown University
     area: Physics
     studyType: B.A.
     startDate: "2012-09"
     endDate: "2016-05"
     courses:
+      - Computational Physics
       - Electricity & Magnetism
       - Advanced Classical Mechanics
       - Quantum Mechanics
-      - Computational Physics
+      - Thermodynamics & Statistical Mechanics
+      - Experiments in Modern Physics
 certificates:
   - name: Certified Kubernetes Application Developer
     date: "2022-10-03"
@@ -127,6 +130,14 @@ certificates:
     date: "2023-08-02"
     issuer: Datadog
     url: https://www.credly.com/badges/9fc523ee-a961-4c3b-b4ce-7c7830b21836
+  - name: ClickHouse Database Associate
+    date: "2025-11-19"
+    issuer: ClickHouse
+    url: https://www.credly.com/badges/d38e5677-321d-402c-8798-c175f7a2016a
+  - name: "LFS148: Getting Started with OpenTelemetry"
+    date: "2025-03-28"
+    issuer: The Linux Foundation
+    url: https://www.credly.com/badges/06e70400-47b0-467d-9540-a06d02aaab05
 languages:
   - language: English
     fluency: Native speaker
@@ -137,6 +148,7 @@ interests:
     keywords:
       - Polynesia
       - Age of Exploration
+      - Scientific
   - name: Genealogy
   - name: Outdoors
     keywords:
@@ -144,7 +156,77 @@ interests:
       - Hiking
       - Snowshoeing
   - name: Music
+    keywords:
+      - Digital music production
+      - Classical
+      - Soundtrack
+      - Rock
+      - Folk
+      - Ethnomusicology
+  - name: Performance
+    keywords:
+      - Solo Vocal
+      - Choir
+      - Guitar
+      - Musical theater
+      - Acting
   - name: Movies
   - name: Video Games
   - name: Homelab
   - name: Home Improvement
+skills:
+  - name: Cloud Native Platforms
+    keywords:
+      - Kubernetes
+      - Helm
+      - Kustomize
+      - Argo CD
+      - Kargo
+      - GitOps
+  - name: Observability
+    keywords:
+      - Datadog
+      - Prometheus
+      - OpenTelemetry
+      - Vector
+      - Fluentd
+      - Fluent Bit
+  - name: DevOps
+    keywords:
+      - Terraform
+      - Terragrunt
+      - Buildkite
+  - name: Programming
+    keywords:
+      - Golang
+      - Bash
+      - Python
+      - C++
+      - Java
+      - YAML
+  - name: AWS
+    keywords:
+      - EKS
+      - IAM
+      - S3
+      - SQS
+      - SNS
+      - DynamoDB
+      - EC2
+  - name: Data Platform and Analytics Infrastructure
+    keywords:
+      - Presto
+      - Trino
+      - Starburst
+      - Qubole
+      - Airflow
+      - Spark
+      - Elasticsearch
+      - ClickHouse
+  - name: Mathematics
+    keywords:
+      - Multivariate Calculus
+      - Linear Algebra
+      - Differential Equations
+      - Probability & Statistics
+      - Mathematical proofs
