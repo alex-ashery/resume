@@ -39,4 +39,6 @@ with pkgs; [
   yq-go
   goresume
   sops
+  cspell
+  pre-commit
 ]
