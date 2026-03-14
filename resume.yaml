@@ -51,7 +51,7 @@ work:
     url: https://azure.microsoft.com/en-us/pricing/details/app-service/linux/
     startDate: 2018-12-01
     endDate: 2020-10-01
-    summary: Worked on platform observability for Azure App Service on Linux, contributing telemetry and monitoring features for both internal operations and customer diagnostics. Developed runtime capabilities that improved app configuration flexibility and storage integration for Linux workloads.
+    summary: Worked on platform observability, contributing telemetry and monitoring features for internal operations and customer diagnostics. Developed runtime capabilities that improved app configuration flexibility and storage integration.
     highlights:
       - Upgraded and was responsible for platform telemetry services. Migrated platform to use Fluent Bit for log forwarding, which dramatically improved telemetry reliability and performance.
       - Implemented Linux Platform logs, which provides customers with improved insights into problems impacting app management.
@@ -64,7 +64,7 @@ work:
     url: https://azure.microsoft.com/en-us/products/storage/data-lake-storage
     startDate: 2016-09-06
     endDate: 2018-12-01
-    summary: Developed a microservice written in C++ for Azure Data Lake Storage that implemented byte-level updatability in a distributed filesystem, enabling arbitrary file writes instead of append-only workflows. Contributed to core service components such as load balancing and connection management, as well as supporting infrastructure such as performance testing and scenario testing.
+    summary: Developed a microservice for Azure Data Lake Storage that implemented byte-level updatability. Contributed to core service components including load balancing, connection management, and testing infrastructure.
     highlights:
       - Formulated and implemented a performance test capable of stressing updatability service’s transactional API, which identified performance and functional bugs, and established service performance metrics.
       - Created a method for reliably maintaining multiple Bond RPC connections in the updatability service.
