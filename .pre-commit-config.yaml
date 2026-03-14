@@ -1,6 +1,11 @@
 repos:
   - repo: local
     hooks:
+      - id: nix-flake-check
+        name: nix flake check
+        entry: nix flake check
+        language: system
+        pass_filenames: false
       - id: cspell-resume
         name: cspell resume.yaml
         entry: cspell resume.yaml

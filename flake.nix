@@ -11,7 +11,7 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = import ./packages.nix { inherit pkgs; };
+          packages = import ./.packages.nix { inherit pkgs; };
           shellHook = ''
             if [ -d .git ]; then
               pre-commit install --install-hooks --hook-type pre-commit
