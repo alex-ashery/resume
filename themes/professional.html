@@ -1,3 +1,18 @@
+{{ define "formatDate" -}}
+  {{- $type := printf "%T" . -}}
+  {{- if eq $type "time.Time" -}}
+    {{- . | date "January 2006" -}}
+  {{- else -}}
+    {{- $value := printf "%s" . -}}
+    {{- if eq (len $value) 7 -}}
+      {{- toDate "2006-01" $value | date "January 2006" -}}
+    {{- else if eq (len $value) 10 -}}
+      {{- toDate "2006-01-02" $value | date "January 2006" -}}
+    {{- else -}}
+      {{- $value -}}
+    {{- end -}}
+  {{- end -}}
+{{- end }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +83,7 @@
     }
 
     .body-inner {
-      margin-left: 0.85in;
+      margin-left: 0.18in;
     }
 
     .name {
@@ -100,16 +115,18 @@
       text-transform: uppercase;
     }
 
-    .summary {
-      font-size: 1em;
-      line-height: 1.25;
-      white-space: pre-line;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
     .entry {
       margin-bottom: 0.08in;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .entry-breakable {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    .entry-intro {
       page-break-inside: avoid;
       break-inside: avoid;
     }
@@ -223,54 +240,43 @@
         <div class="name">{{ .basics.name }}</div>
         <div class="contact-row">
           {{ with .basics.location }}
-            {{ if or .city .region .countrycode }}
-              <div class="contact-item contact-location">{{ .city }}{{ if and .city .region }}, {{ end }}{{ .region }}{{ if and (or .city .region) .countrycode }}, {{ end }}{{ .countrycode }}</div>
+            {{ if or .address .city .region .postalcode }}
+              <div class="contact-item">
+                {{ .address }}{{ if and .address (or .city .region .postalcode) }}, {{ end }}{{ .city }}{{ if and .city (or .region .postalcode) }}, {{ end }}{{ .region }}{{ if and .region (or .postalcode) }}, {{ end }}{{ .postalcode }}{{ if and .postalcode }} {{ end }}
+              </div>
             {{ end }}
           {{ end }}
+        </div>
+        <div class="contact-row">
           {{ with .basics.email }}<div class="contact-item">{{ . }}</div>{{ end }}
           {{ with .basics.phone }}<div class="contact-item">{{ . }}</div>{{ end }}
           {{ with .basics.url }}<div class="contact-item"><a href="{{ . }}">{{ . }}</a></div>{{ end }}
-          {{ range .basics.profiles }}
-            {{ if .url }}
-              <div class="contact-item"><a href="{{ .url }}">{{ if .username }}{{ .username }}{{ else }}{{ .url }}{{ end }}</a></div>
-            {{ else if .username }}
-              <div class="contact-item">{{ .username }}</div>
-            {{ end }}
-          {{ end }}
         </div>
       </div>
     </div>
-
-    {{ with .basics.summary }}
-      <section class="section">
-        <h2>personal</h2>
-        <hr>
-        <div class="section-inner body-inner">
-          <p class="summary">{{ . }}</p>
-        </div>
-      </section>
-    {{ end }}
 
     {{ if .work }}
       <section class="section">
         <h2>work experience</h2>
         <hr>
         <div class="section-inner body-inner">
-          {{ range .work }}
-            <div class="entry">
-              <div class="entry-header">
-                <div class="entry-title">{{ .name }}</div>
-                <div class="entry-date">
-                  {{ with .startdate }}<span>{{ toDate "2006-01-02" . | date "January 2006" }}</span>{{ end }}
-                  {{ if or .startdate .enddate }}<span>&mdash;</span>{{ end }}
-                  {{ if .enddate }}<span>{{ toDate "2006-01-02" .enddate | date "January 2006" }}</span>{{ else }}<span>Present</span>{{ end }}
+          {{ range $index, $work := .work }}
+            <div class="entry entry-breakable">
+              <div class="entry-intro">
+                <div class="entry-header">
+                  <div class="entry-title">{{ $work.name }}</div>
+                  <div class="entry-date">
+                    {{ with $work.startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
+                    {{ if or $work.startdate $work.enddate }}<span>&mdash;</span>{{ end }}
+                    {{ if $work.enddate }}<span>{{ template "formatDate" $work.enddate }}</span>{{ else }}<span>Present</span>{{ end }}
+                  </div>
                 </div>
+                {{ with $work.position }}<div class="entry-subtitle">{{ . }}</div>{{ end }}
+                {{ with $work.summary }}<p class="entry-summary">{{ . }}</p>{{ end }}
               </div>
-              {{ with .position }}<div class="entry-subtitle">{{ . }}</div>{{ end }}
-              {{ with .summary }}<p class="entry-summary">{{ . }}</p>{{ end }}
-              {{ if .highlights }}
+              {{ if and (eq $index 0) $work.highlights }}
                 <ul class="bullets">
-                  {{ range .highlights }}
+                  {{ range $work.highlights }}
                     <li>{{ . }}</li>
                   {{ end }}
                 </ul>
@@ -292,9 +298,9 @@
                 <div class="entry-title">{{ .name }}</div>
                 {{ if or .startdate .enddate }}
                   <div class="entry-date">
-                    {{ with .startdate }}<span>{{ toDate "2006-01-02" . | date "January 2006" }}</span>{{ end }}
+                    {{ with .startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
                     <span>&mdash;</span>
-                    {{ if .enddate }}<span>{{ toDate "2006-01-02" .enddate | date "January 2006" }}</span>{{ else }}<span>Present</span>{{ end }}
+                    {{ if .enddate }}<span>{{ template "formatDate" .enddate }}</span>{{ else }}<span>Present</span>{{ end }}
                   </div>
                 {{ end }}
               </div>
@@ -322,9 +328,9 @@
               <div class="entry-header">
                 <div class="entry-title">{{ .institution }}</div>
                 <div class="entry-date">
-                  {{ with .startdate }}<span>{{ toDate "2006-01-02" . | date "January 2006" }}</span>{{ end }}
+                  {{ with .startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
                   {{ if or .startdate .enddate }}<span>&mdash;</span>{{ end }}
-                  {{ if .enddate }}<span>{{ toDate "2006-01-02" .enddate | date "January 2006" }}</span>{{ else }}<span>Present</span>{{ end }}
+                  {{ if .enddate }}<span>{{ template "formatDate" .enddate }}</span>{{ else }}<span>Present</span>{{ end }}
                 </div>
               </div>
               <div class="entry-subtitle">{{ .studytype }}{{ if and .studytype .area }}, {{ end }}{{ .area }}</div>
@@ -344,7 +350,7 @@
               <div class="entry-header">
                 <div class="entry-title">{{ .title }}</div>
                 {{ with .date }}
-                  <div class="entry-date"><span>{{ toDate "2006-01-02" . | date "January 2006" }}</span></div>
+                  <div class="entry-date"><span>{{ template "formatDate" . }}</span></div>
                 {{ end }}
               </div>
               {{ with .awarder }}<div class="entry-subtitle">{{ . }}</div>{{ end }}
@@ -365,9 +371,9 @@
               <div class="entry-header">
                 <div class="entry-title">{{ .position }}</div>
                 <div class="entry-date">
-                  {{ with .startdate }}<span>{{ toDate "2006-01-02" . | date "January 2006" }}</span>{{ end }}
+                  {{ with .startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
                   {{ if or .startdate .enddate }}<span>&mdash;</span>{{ end }}
-                  {{ if .enddate }}<span>{{ toDate "2006-01-02" .enddate | date "January 2006" }}</span>{{ else }}<span>Present</span>{{ end }}
+                  {{ if .enddate }}<span>{{ template "formatDate" .enddate }}</span>{{ else }}<span>Present</span>{{ end }}
                 </div>
               </div>
               {{ with .organization }}<div class="entry-subtitle">{{ . }}</div>{{ end }}
@@ -385,54 +391,24 @@
       </section>
     {{ end }}
 
-    {{ if .languages }}
-      <section class="section">
-        <h2>languages</h2>
-        <hr>
-        <div class="section-inner body-inner">
-          {{ range .languages }}
-            <div class="label-row">
-              <div class="label">{{ .language }}:</div>
-              <div class="value">{{ .fluency }}</div>
-            </div>
-          {{ end }}
-        </div>
-      </section>
-    {{ end }}
-
     {{ if .skills }}
       <section class="section">
         <h2>skills</h2>
         <hr>
         <div class="section-inner body-inner">
           {{ range .skills }}
-            <div class="label-row">
-              <div class="label">{{ .name }}:</div>
-              <div class="value">
-                {{ if .keywords }}
-                  {{ range $i, $k := .keywords }}{{ if $i }}, {{ end }}{{ $k }}{{ end }}
-                {{ else if .tags }}
-                  {{ range $i, $t := .tags }}{{ if $i }}, {{ end }}{{ $t }}{{ end }}
-                {{ end }}
+            {{ if ne .name "Mathematics" }}
+              <div class="label-row">
+                <div class="label">{{ .name }}:</div>
+                <div class="value">
+                  {{ if .keywords }}
+                    {{ range $i, $k := .keywords }}{{ if $i }}, {{ end }}{{ $k }}{{ end }}
+                  {{ else if .tags }}
+                    {{ range $i, $t := .tags }}{{ if $i }}, {{ end }}{{ $t }}{{ end }}
+                  {{ end }}
+                </div>
               </div>
-            </div>
-          {{ end }}
-        </div>
-      </section>
-    {{ end }}
-
-    {{ if .interests }}
-      <section class="section">
-        <h2>interests</h2>
-        <hr>
-        <div class="section-inner body-inner">
-          {{ range .interests }}
-            <div class="label-row">
-              <div class="label">{{ .name }}:</div>
-              <div class="value">
-                {{ range $i, $k := .keywords }}{{ if $i }}, {{ end }}{{ $k }}{{ end }}
-              </div>
-            </div>
+            {{ end }}
           {{ end }}
         </div>
       </section>
