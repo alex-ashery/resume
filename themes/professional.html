@@ -153,6 +153,22 @@
       margin-bottom: 0.03in;
     }
 
+    .role-header {
+      margin-bottom: 0;
+    }
+
+    .role-title {
+      margin-bottom: 0;
+    }
+
+    .role-summary {
+      margin-bottom: 0.05in;
+    }
+
+    .entry-group:last-child .role-summary {
+      margin-bottom: 0;
+    }
+
     .entry-date {
       display: flex;
       font-style: italic;
@@ -260,20 +276,30 @@
         <h2>work experience</h2>
         <hr>
         <div class="section-inner body-inner">
+          {{ $firstWork := true }}
+          {{ $previousCompany := "" }}
           {{ range $index, $work := .work }}
+            {{ $companyChanged := ne $work.name $previousCompany }}
+            {{ if $companyChanged }}
+              {{ if not $firstWork }}
+                </div>
+              </div>
+            {{ end }}
             <div class="entry entry-breakable">
               <div class="entry-intro">
-                <div class="entry-header">
-                  <div class="entry-title">{{ $work.name }}</div>
-                  <div class="entry-date">
-                    {{ with $work.startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
-                    {{ if or $work.startdate $work.enddate }}<span>&mdash;</span>{{ end }}
-                    {{ if $work.enddate }}<span>{{ template "formatDate" $work.enddate }}</span>{{ else }}<span>Present</span>{{ end }}
+                <div class="entry-title">{{ $work.name }}</div>
+            {{ end }}
+                <div class="entry-group">
+                  <div class="entry-header role-header">
+                    {{ with $work.position }}<div class="entry-subtitle role-title">{{ . }}</div>{{ end }}
+                    <div class="entry-date">
+                      {{ with $work.startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
+                      {{ if or $work.startdate $work.enddate }}<span>&mdash;</span>{{ end }}
+                      {{ if $work.enddate }}<span>{{ template "formatDate" $work.enddate }}</span>{{ else }}<span>Present</span>{{ end }}
+                    </div>
                   </div>
+                  {{ with $work.summary }}<p class="entry-summary role-summary">{{ . }}</p>{{ end }}
                 </div>
-                {{ with $work.position }}<div class="entry-subtitle">{{ . }}</div>{{ end }}
-                {{ with $work.summary }}<p class="entry-summary">{{ . }}</p>{{ end }}
-              </div>
               {{ if and (eq $index 0) $work.highlights }}
                 <ul class="bullets">
                   {{ range $work.highlights }}
@@ -281,6 +307,11 @@
                   {{ end }}
                 </ul>
               {{ end }}
+            {{ $previousCompany = $work.name }}
+            {{ $firstWork = false }}
+          {{ end }}
+          {{ if not $firstWork }}
+              </div>
             </div>
           {{ end }}
         </div>
