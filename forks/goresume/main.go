@@ -198,7 +198,12 @@ func export(_ *cobra.Command, _ []string) {
 		check(errPage)
 		errContent := page.SetContent(buf.String())
 		check(errContent)
-		pdf, errPdf := page.PDF(playwright.PagePdfOptions{Format: playwright.String("Letter")})
+		pdf, errPdf := page.PDF(playwright.PagePdfOptions{
+			Format:          playwright.String("Letter"),
+			Outline:         playwright.Bool(true),
+			PrintBackground: playwright.Bool(true),
+			Tagged:          playwright.Bool(true),
+		})
 		check(errPdf)
 		_, errWrite := output.Write(pdf)
 		check(errWrite)

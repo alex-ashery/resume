@@ -119,11 +119,8 @@
     }
 
     .contact-row {
-      display: flex;
-      gap: 0.06in 0.2in;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 0.00in;
+      margin-bottom: 0;
+      text-align: center;
     }
 
     .contact-row:last-child {
@@ -131,6 +128,7 @@
     }
 
     .contact-item {
+      display: inline;
       text-align: center;
     }
 
@@ -157,12 +155,10 @@
     }
 
     .entry-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.08in;
+      display: table;
+      width: 100%;
       margin-bottom: 0.02in;
-      align-items: baseline;
-      flex-wrap: wrap;
+      table-layout: fixed;
     }
 
     .entry-title,
@@ -199,6 +195,14 @@
       margin-bottom: 0;
     }
 
+    .entry-group {
+      margin-bottom: 0.05in;
+    }
+
+    .entry-group:last-child {
+      margin-bottom: 0;
+    }
+
     .role-title {
       margin-bottom: 0;
     }
@@ -211,10 +215,18 @@
       margin-bottom: 0;
     }
 
+    .entry-header > .entry-subtitle,
+    .entry-header > .entry-title,
+    .entry-header > .reference-name,
     .entry-date {
-      display: flex;
+      display: table-cell;
+      vertical-align: baseline;
+    }
+
+    .entry-date {
+      padding-left: 0.08in;
+      text-align: right;
       white-space: nowrap;
-      gap: 4px;
     }
 
     .entry-summary {
@@ -226,23 +238,14 @@
       margin: 0;
       padding-left: 0.2in;
       line-height: 1.25;
-      list-style: none;
+      list-style: disc outside;
     }
 
     ul.bullets li {
       margin: 0;
       padding: 0;
-      position: relative;
       text-align: justify;
       text-justify: inter-word;
-    }
-
-    ul.bullets li::before {
-      content: "\2022";
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-      line-height: 1;
     }
 
     .reference-name {
@@ -288,24 +291,20 @@
             {{ $companyChanged := ne $work.name $previousCompany }}
             {{ if $companyChanged }}
               {{ if not $firstWork }}
-                </div>
               </div>
             {{ end }}
             <div class="entry entry-breakable">
-              <div class="entry-intro">
-                <div class="entry-title">{{ $work.name }}</div>
+              <div class="entry-title">{{ $work.name }}</div>
             {{ end }}
-                <div class="entry-group">
-                  <div class="entry-header role-header">
-                    {{ with $work.position }}<div class="entry-subtitle role-title">{{ . }}</div>{{ end }}
-                    <div class="entry-date">
-                      {{ template "formatDateRange" (dict "start" $work.startdate "end" $work.enddate) }}
-                    </div>
+              <div class="entry-group">
+                <div class="entry-header role-header">
+                  {{ with $work.position }}<div class="entry-subtitle role-title">{{ . }}</div>{{ end }}
+                  <div class="entry-date">
+                    {{ template "formatDateRange" (dict "start" $work.startdate "end" $work.enddate) }}
                   </div>
-                  {{ with $work.summary }}<p class="entry-summary role-summary">{{ . }}</p>{{ end }}
                 </div>
+                {{ with $work.summary }}<p class="entry-summary role-summary">{{ . }}</p>{{ end }}
               {{ if $work.highlights }}
-              </div>
                 <ul class="bullets">
                   {{ if eq $index 0 }}
                     {{ range $work.highlights }}
@@ -315,13 +314,12 @@
                     <li>{{ index $work.highlights 0 }}</li>
                   {{ end }}
                 </ul>
-              <div class="entry-intro">
               {{ end }}
+              </div>
             {{ $previousCompany = $work.name }}
             {{ $firstWork = false }}
           {{ end }}
           {{ if not $firstWork }}
-              </div>
             </div>
           {{ end }}
         </div>
