@@ -37,7 +37,7 @@ work:
     url: https://www.zillow.com/
     startDate: 2020-11-09
     endDate: 2022-01-25
-    summary: Built and operated Zillow’s data infrastructure. Implemented automation to improve the scalability and performance of critical data platform operations for internal analytics teams.
+    summary: Implemented automation to improve the scalability and performance of data platform operations for analytics teams. Built tooling for migration testing, secrets management, caching, and operational support across query infrastructure.
     highlights:
       - Assisted migration from Presto on Qubole to Trino on Starburst. Maintained Qubole service prior to migration. Documented and communicated migration status and user action items. Bootstrapped new Trino clusters on EKS and documented process. Conducted tests. Collaborated with Starburst support on resolving pain points.
       - Wrote k8s ExternalSecrets manifests for Trino. Encoded secrets and data lake access policies in Terraform.
@@ -64,7 +64,7 @@ work:
     url: https://azure.microsoft.com/en-us/products/storage/data-lake-storage
     startDate: 2016-09-06
     endDate: 2018-12-01
-    summary: Developed a microservice for Azure Data Lake Storage that implemented byte-level updatability. Contributed to core service components including load balancing, connection management, and testing infrastructure.
+    summary: Developed a microservice that implemented byte-level updatability for an append-only distributed filesystem. Contributed to core service components including load balancing, connection management, and testing infrastructure.
     highlights:
       - Formulated and implemented a performance test capable of stressing updatability service’s transactional API, which identified performance and functional bugs, and established service performance metrics.
       - Created a method for reliably maintaining multiple Bond RPC connections in the updatability service.

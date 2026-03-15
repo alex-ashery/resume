@@ -356,17 +356,80 @@
         <h2>education</h2>
         <hr>
         <div class="section-inner body-inner">
-          {{ range .education }}
-            <div class="entry">
-              <div class="entry-header">
-                <div class="entry-title">{{ .institution }}</div>
-                <div class="entry-date">
-                  {{ with .startdate }}<span>{{ template "formatDate" . }}</span>{{ end }}
-                  {{ if or .startdate .enddate }}<span>&mdash;</span>{{ end }}
-                  {{ if .enddate }}<span>{{ template "formatDate" .enddate }}</span>{{ else }}<span>Present</span>{{ end }}
+          {{ $firstEducation := true }}
+          {{ $previousInstitution := "" }}
+          {{ $degreeLine := "" }}
+          {{ $groupStart := "" }}
+          {{ $groupEnd := "" }}
+          {{ range $education := .education }}
+            {{ $institutionChanged := ne $education.institution $previousInstitution }}
+            {{ $dateChanged := or (ne $education.startdate $groupStart) (ne $education.enddate $groupEnd) }}
+            {{ if $institutionChanged }}
+              {{ if not $firstEducation }}
+                {{ if ne $degreeLine "" }}
+                  <div class="entry-group">
+                    <div class="entry-header role-header">
+                      <div class="entry-subtitle role-title">{{ $degreeLine }}</div>
+                      <div class="entry-date">
+                        {{ with $groupStart }}<span>{{ template "formatDate" . }}</span>{{ end }}
+                        {{ if or $groupStart $groupEnd }}<span>&mdash;</span>{{ end }}
+                        {{ if $groupEnd }}<span>{{ template "formatDate" $groupEnd }}</span>{{ else }}<span>Present</span>{{ end }}
+                      </div>
+                    </div>
+                  </div>
+                {{ end }}
+              </div>
+                {{ $degreeLine = "" }}
+                {{ $groupStart = "" }}
+                {{ $groupEnd = "" }}
+              {{ end }}
+              <div class="entry">
+                <div class="entry-title">{{ $education.institution }}</div>
+              {{ $firstEducation = false }}
+            {{ end }}
+            {{ if and (not $institutionChanged) $dateChanged }}
+              {{ if ne $degreeLine "" }}
+                <div class="entry-group">
+                  <div class="entry-header role-header">
+                    <div class="entry-subtitle role-title">{{ $degreeLine }}</div>
+                    <div class="entry-date">
+                      {{ with $groupStart }}<span>{{ template "formatDate" . }}</span>{{ end }}
+                      {{ if or $groupStart $groupEnd }}<span>&mdash;</span>{{ end }}
+                      {{ if $groupEnd }}<span>{{ template "formatDate" $groupEnd }}</span>{{ else }}<span>Present</span>{{ end }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+              {{ $degreeLine = "" }}
+            {{ end }}
+            {{ $degreeLabel := $education.studytype }}
+            {{ if and $education.studytype $education.area }}
+              {{ $degreeLabel = printf "%s, %s" $education.studytype $education.area }}
+            {{ else if $education.area }}
+              {{ $degreeLabel = $education.area }}
+            {{ end }}
+            {{ if ne $degreeLine "" }}
+              {{ $degreeLine = printf "%s, %s" $degreeLine $degreeLabel }}
+            {{ else }}
+              {{ $degreeLine = $degreeLabel }}
+            {{ end }}
+            {{ $groupStart = $education.startdate }}
+            {{ $groupEnd = $education.enddate }}
+            {{ $previousInstitution = $education.institution }}
+          {{ end }}
+          {{ if not $firstEducation }}
+            {{ if ne $degreeLine "" }}
+              <div class="entry-group">
+                <div class="entry-header role-header">
+                  <div class="entry-subtitle role-title">{{ $degreeLine }}</div>
+                  <div class="entry-date">
+                    {{ with $groupStart }}<span>{{ template "formatDate" . }}</span>{{ end }}
+                    {{ if or $groupStart $groupEnd }}<span>&mdash;</span>{{ end }}
+                    {{ if $groupEnd }}<span>{{ template "formatDate" $groupEnd }}</span>{{ else }}<span>Present</span>{{ end }}
+                  </div>
                 </div>
               </div>
-              <div class="entry-subtitle">{{ .studytype }}{{ if and .studytype .area }}, {{ end }}{{ .area }}</div>
+            {{ end }}
             </div>
           {{ end }}
         </div>
