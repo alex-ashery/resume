@@ -38,7 +38,7 @@ work:
     endDate: 2022-01-25
     summary: Implemented automation to improve the scalability and performance of data platform operations for analytics teams. Built tooling for migration testing, secrets management, caching, and operational support across query infrastructure.
     highlights:
-      - Assisted migration from Presto on Qubole to Trino on Starburst. Maintained Qubole service prior to migration. Documented and communicated migration status and user action items. Bootstrapped new Trino clusters on EKS and documented process. Conducted tests. Collaborated with Starburst support on resolving pain points.
+      - Assisted Zillow's migration from Presto on Qubole to Trino on Starburst. Helped maintain the legacy service, bootstrap EKS-based Trino clusters, and coordinate testing, documentation, and user migration work.
       - Wrote k8s ExternalSecrets manifests for Trino. Encoded secrets and data lake access policies in Terraform.
       - Developed a Java tool for replaying Presto/Trino queries which mimics production traffic patterns. Used tool to evaluate the system's performance and functional capabilities for version upgrades and feature comparisons. Educated and guided BI Platform team members with using the query replay tool for conducting migration tests.
       - Provided on-call support for Mode, Tableau, and Presto/Trino for data scientists and business analysts.
@@ -52,7 +52,7 @@ work:
     endDate: 2020-10-01
     summary: Worked on platform observability, contributing telemetry and monitoring features for internal operations and customer diagnostics. Developed runtime capabilities that improved app configuration flexibility and storage integration.
     highlights:
-      - Upgraded and was responsible for platform telemetry services. Migrated platform to use Fluent Bit for log forwarding, which dramatically improved telemetry reliability and performance.
+      - Owned telemetry services for Azure App Service on Linux and migrated log forwarding to Fluent Bit. Improved telemetry reliability and performance for internal operations and customer diagnostics.
       - Implemented Linux Platform logs, which provides customers with improved insights into problems impacting app management.
       - Enabled monitoring of custom images for App Service Linux customers via Azure App Insights.
       - Collaborated on developing the bring-your-own-storage feature, which allows customers to mount Azure Storage solutions to their Linux web apps. Enabled feature configuration via ARM templates. Conducted performance tests to provide customer guidance on setting storage quotas for anticipated workloads.
@@ -65,9 +65,9 @@ work:
     endDate: 2018-12-01
     summary: Developed a microservice that implemented byte-level updatability for an append-only distributed filesystem. Contributed to core service components including load balancing, connection management, and testing infrastructure.
     highlights:
+      - Built a scenario testing platform for the updatability service and integrated it with VSTS gated check-ins. Improved service reliability and reduced test development time.
       - Formulated and implemented a performance test capable of stressing updatability service's transactional API, which identified performance and functional bugs, and established service performance metrics.
       - Created a method for reliably maintaining multiple Bond RPC connections in the updatability service.
-      - Built a scenario testing platform for updatability service and integrated platform with VSTS for gated check-ins, improving service reliability and lowering test development time.
       - Created an updatability service frontend for load-balancing. Updated the service RPC schema and communication mechanisms to use simplified, command-agnostic requests, reducing frontend serialization overhead.
       - Wrote modules that handle leader election for dynamic load-balancing in naming service.
       - Upgraded updatability service to communicate using a secure transport protocol, enabling security compliance.

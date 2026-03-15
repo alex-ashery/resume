@@ -55,7 +55,7 @@
 
     body {
       margin: 0;
-      padding: 0;
+      padding: 0.5in;
     }
 
     p {
@@ -250,8 +250,8 @@
     }
 
     @page {
-      size: A4;
-      margin: 0.5in;
+      size: Letter;
+      margin: 0;
     }
   </style>
 </head>
@@ -304,11 +304,15 @@
                   </div>
                   {{ with $work.summary }}<p class="entry-summary role-summary">{{ . }}</p>{{ end }}
                 </div>
-              {{ if and (eq $index 0) $work.highlights }}
+              {{ if $work.highlights }}
               </div>
                 <ul class="bullets">
-                  {{ range $work.highlights }}
-                    <li>{{ . }}</li>
+                  {{ if eq $index 0 }}
+                    {{ range $work.highlights }}
+                      <li>{{ . }}</li>
+                    {{ end }}
+                  {{ else }}
+                    <li>{{ index $work.highlights 0 }}</li>
                   {{ end }}
                 </ul>
               <div class="entry-intro">
