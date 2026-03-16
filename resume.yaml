@@ -26,11 +26,9 @@ work:
       - Improved log pipeline resilience with graceful degradation and replay for Elasticsearch outages. Guided DR readiness by identifying dependencies and designing a resilient architecture for storage and consumers.
       - Enabled observability for internal AI platforms and cloud-hosted LLM agents. Built Datadog access through an Envoy-based proxy and helped establish telemetry ingestion patterns for AI workloads running on EKS.
       - Contributed to Block's migration from SignalFx to Datadog. Co-authored migration guidance, improved monitor provisioning workflows, and partnered with teams to establish monitor templates and ownership expectations.
-      - Operated and improved shared observability platforms for logs, metrics, and monitoring. Automated provisioning and deployment workflows with Terraform, Helm, and Argo CD, and resolved scale and integration issues across internal platform consumers.
       - Served as a Datadog platform expert and administrator for Block. Guided leadership, platform teams, and developers on product capabilities, reliability, cost, and operational policy. Managed sensitive resources and supported troubleshooting for Datadog access, pipelines, and incident handling.
       - Operated Cash App's shared telemetry platforms across logs and metrics. Improved rate limiting, deployment automation, and scale-related reliability issues, and enabled partner integrations and downstream security analytics use cases.
-      - Supported monitor provisioning, developer enablement, and observability on-call operations. Improved provisioning workflows, templates, schema support, and user-facing tooling, and led incident response, postmortems, and support process improvements.
-      - Conducted programming and system design interviews for engineering candidates across Block.
+      - Supported observability on-call operations. Improved provisioning workflows, templates, schema support, and user-facing tooling. Led incident response, postmortems, and support process improvements.
   - name: Zillow Group, LLC
     position: Software Development Engineer, Data Infrastructure
     url: https://www.zillow.com/

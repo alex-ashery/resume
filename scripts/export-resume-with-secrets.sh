@@ -26,7 +26,7 @@ if [ -d "$GORESUME_SRC" ]; then
   fi
   (
     cd "$GORESUME_SRC"
-    go build -o "$GORESUME_BIN" .
+    go build -buildvcs=false -o "$GORESUME_BIN" .
   )
 else
   GORESUME_BIN="$(command -v goresume)"
@@ -50,6 +50,11 @@ case "$VARIANT" in
     PDF_OUTPUT="rendered/resume-observability.pdf"
     HTML_OUTPUT="rendered/resume-observability.html"
     ;;
+  block-all)
+    yq eval '(.work[] | select(.name != "Block, Inc.") | .highlights) = []' "$MERGED_TMP" > "$FILTERED_TMP"
+    PDF_OUTPUT="rendered/resume-block-all.pdf"
+    HTML_OUTPUT="rendered/resume-block-all.html"
+    ;;
   platform)
     yq eval '(.work[] | select(.name == "Block, Inc.") | .highlights) |= [.[0], .[1], .[2], .[3], .[4]]' "$MERGED_TMP" > "$FILTERED_TMP"
     PDF_OUTPUT="rendered/resume-platform.pdf"
@@ -57,7 +62,7 @@ case "$VARIANT" in
     ;;
   *)
     echo "Unknown resume variant: $VARIANT" >&2
-    echo "Expected one of: default, observability, platform" >&2
+    echo "Expected one of: default, observability, block-all, platform" >&2
     exit 1
     ;;
 esac
